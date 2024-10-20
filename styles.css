@@ -1,0 +1,292 @@
+/* General Rules */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html{
+    height: 100%;
+}
+body{
+    height: 100vh;
+    font-family: "Roboto Mono", monospace;
+}
+
+
+/*Container of main Page*/
+
+#main{
+    background-color: rgb(250, 246, 249);
+    width: 100%;
+    height:100vh;
+   
+}
+
+#heading{
+    margin: 0 calc(100%/2.8);
+}
+
+/*Menu Button */
+#menu{
+    font-size: 30px;
+    position: relative;
+    left: 12px;
+    bottom: 33px;
+}
+
+/* Nav Bar - Main */
+.nav_bar{
+    background-color: rgba(249, 248, 248, 0.2);
+    width: 250px;
+    height:480px;
+}
+#nav,#sort_bar,#search_bar{
+    position: absolute;
+    background-color: rgba(249, 248, 248, 0.2);
+    width: 250px;
+    height: 520px;
+    opacity: 0;
+}
+#nav a,#sort_bar a,#search_bar a{
+    text-decoration: none;
+    color: black;
+}
+#nav ul,#sort_bar ul,#search_bar ul{
+    width: 100%;
+    height: 100%;
+    padding-left: 1px;
+    text-align: center;
+}
+#nav li,#sort_bar li,#search_bar li{
+    padding: 20px 0;
+    list-style: none;
+}
+li:hover{
+    background-color: rgba(249, 248, 248, 0.5);
+}
+
+
+
+/* Animation for in and out moves - main nav bar*/
+.out{
+    animation: come_out 2s cubic-bezier(0.23, 1, 0.320, 1)  1 forwards;
+}
+@keyframes come_out {
+    0%{
+        left: -105px;
+        opacity: 1;
+    }
+
+    100%{
+        left: 1px;
+        opacity: 1;
+    }
+    
+}
+.in{
+    animation: go_in 2s cubic-bezier(0.23, 1, 0.320, 1) 1 forwards;
+}
+@keyframes go_in {
+   from{
+        left: 8px;
+        opacity: 1;
+    }
+
+   100%{
+        left: -245px;
+        opacity: 1;
+    }
+}
+
+h3{
+    margin: 0 45%; font-family: "Roboto Mono", monospace;
+    text-decoration: underline;
+    font-weight: 800;
+}
+
+/* Sort */
+.sort_container{
+    width: 75vw;
+    height: 70vh;
+    margin: 2% 20%;
+}
+
+.sort_type_container{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+    grid-template-rows: auto;
+}
+
+.sort_type{
+    width: 8vw;
+    height: 7vh;
+    border: 3px solid black;
+    margin: 15px 15px;
+    text-align: center;
+}
+.sort_type p {
+    margin: 15px;
+}
+
+.sort_chart_container{
+    border: 2px solid black;
+    width: 75vw;
+    height: 70vh;
+    position: relative;
+    right: 30px;
+}
+.sort_chart_line{
+    width: 65vw;
+    height: 5px;
+    border-bottom: 5px solid rgb(149, 36, 36);
+    position: relative;
+    top: 96%;
+    left: 58px;
+}
+.sort_chart_box{
+    width: 6.5vw;
+    height: 5vh;
+    border: 2px solid white;
+    position: relative;
+    top: 1%;
+    background-color: rgb(158, 222, 222);
+   
+}
+.sort_chartBox_container{
+    position: relative;
+    top: 22%;
+    left: 5%;
+    width: 65vw;
+    height: 51vh;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto;
+    grid-template-rows: auto auto;
+    /*border: 2px solid black;*/
+    transform: rotate(180deg);
+}
+
+.bubble_animation{
+    animation: bubble 3s cubic-bezier(0.19, 1, 0.22, 1) 2s ;
+}
+
+@keyframes bubble {
+    0%{
+        left: 0px;
+    }
+    50%{
+        left: 5px;
+    }
+    100%{
+        left: 12px;
+        background-color: yellow;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Animation for side bars 
+.show{
+    animation: show 2s cubic-bezier(0.23, 1, 0.320, 1)  1 forwards;
+}
+@keyframes show{
+    100%{
+        
+        opacity: 1;
+    }
+    
+}
+.fade{
+    animation:fade 2s cubic-bezier(0.23, 1, 0.320, 1)  1 forwards;
+}
+@keyframes fade{
+    100%{
+        
+        opacity: 0;
+    }
+    
+}
+
+ Search Bar 
+#search_bar{
+    position: relative;
+    left: 165px;
+    top: 101px;
+    opacity: 0;
+   z-index: 2;
+}
+
+*/ 
+.bubble_div{
+    background-color:gray ;
+    width: 20vw;
+    height: 20vh;
+    
+}
+.bubble {
+    background-color: aqua;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+}
+
+
+
+.new_sorting{
+    width: 300px;
+    height: 250px;
+    position: absolute;
+    
+}
+.initiate{
+    margin: 4.1em 10px;
+
+}
+.box{
+    
+    width: 55px;
+    border: 2px solid black;
+    border-bottom: 2px solid red;
+    margin: 5px;
+    display: inline-flex;
+    
+}
+.frame{
+    width: 60vw;
+    height: 40vh;
+    border: 2px solid black;
+    transform: rotate(0deg);
+    margin-left: 40%;
+    padding-left: 90px;
+    padding-top: 40px;
+}
+.leftRight{
+    animation: left-to-right 4s cubic-bezier(0.075, 0.82, 0.165, 1)  2 ;
+}
+
+@keyframes left-to-right {
+   0%{
+    background-color: aqua;
+   }
+    100%{
+    outline: "2px solid red";
+    background-color: azure;
+}
+}
