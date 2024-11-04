@@ -48,27 +48,41 @@ function createNewSet(){
 const checkList = {};  
 let x = 0;
 let y = 0;
-function compareHeight(i,j){
-  console.log(i,j,boxes[i].style.height,boxes[j].style.height,checkList)
- 
+function compareHeight(i,j,newValues){
+  values = newValues;
+
+console.log(i,j,boxes[i].style.height,boxes[j].style.height,checkList)
+
 if(values[i] > values[j]){
   if(checkList[i] == undefined && checkList[j] == undefined){    
     checkList[i] = 1;
     checkList[j] = 1;
-    x = 70;
-    y = -70;
+    x = 43;
+    y = -44;
     }
     else if(i in checkList){
       checkList[i] += 1;
-      x = x + 70;
+      x = x + 43;
       if(checkList[j] == undefined){
         checkList[j] = 1;
-        y = - 70;
+        y = - 44;
+      }
+      else if(j in checkList){
+        checkList[j] += 1;
+        y = y - 44;
       }
     }
     else if(j in checkList){
       checkList[j] += 1;
-      y = y - 70;
+      y = y - 44;
+      if(i in checkList){
+        checkList[i] += 1;
+        x = x + 43;
+      }
+      else if(checkList[i] == undefined){
+        checkList[i] = 1;
+        x = 43;
+      }
     }
   boxes[i].style.transform = `translateX(${x}px)`;
   boxes[i].style.transition = "transform 1s ease";
@@ -86,32 +100,60 @@ return j;
 
 
 button.addEventListener("click",()=> {
-  console.log(values)
-let k = 0;
+
+
+let val;
+val = 0;
 let l = 1;
- let val = compareHeight(k,l);
+let x = 2000;
+let newArr = [];
 
-let val2;
-setTimeout(function () {
-  val2 = compareHeight(val,l+1)
-  return val2
- },2000);
-console.log(val2,"iteration")
-let val3;
-setTimeout(function () {
-   val3 = compareHeight(val2,l+2)
- return val3
-},4000);
-
-let val4;
-setTimeout(function () {
-  val4 =  compareHeight(val3,l+3)
-  return val4;
- },6000);
+const interval = setInterval(function() {
+  console.log(val,l,values)
+  val = compareHeight(val,l,values)
+   if(val != l){
+    if(val in newArr){
+      let temp = newArr.indexOf(val);
+      newArr.splice(temp,1);
+    }
+    else if(l in newArr){
+      let temp = newArr.indexOf(val);
+      newArr.splice(temp,1);
+    }
+    newArr.push(values[l]);
+    newArr.push(values[val]);
+  }
+  else{
+    if(l in newArr){
+      let temp = newArr.indexOf(val);
+      newArr.splice(temp,1);
+    }
+    // else if(val in newArr){
+    //   let temp = newArr.indexOf(val);
+    //   newArr.splice(temp,1);
+    // }
+    // newArr.push(values[val])
+    newArr.push(values[l])
+  }
  
-setTimeout(function () {
-  return compareHeight(val4,l+4)
- },8000);
- 
+  l += 1;
+  x += 2000;
+  if(l == 5){
+    const nval = newArr;
+     values = nval;
+     val = 0
+     l = 1
+    // clearInterval(interval)
+  }
+   if(l == 6){
+    clearInterval(interval)
+  }
+},x)
 
 });
+
+
+
+
+
+ 
